@@ -1,0 +1,111 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQItem[] = [
+  {
+    question: 'Quanto tempo demora o serviço?',
+    answer: 'Depende do serviço (e da minha quantidade de clientes)! Uma otimização simples leva de 1 a 2 dias. Formatação completa com backup pode levar de 2 a 3 dias. Sempre informo o prazo antes de começar.',
+  },
+  {
+    question: 'Preciso formatar para o PC ficar rápido?',
+    answer: 'Nem sempre! Em muitos casos, uma boa otimização e limpeza resolve o problema sem precisar formatar. Só recomendo formatação quando realmente necessário.',
+  },
+  {
+    question: 'Atende em domicílio?',
+    answer: 'Sim! Atendo em Mussurunga I e proximidades. Para serviços rápidos, posso ir até você. Para serviços mais complexos, faço a coleta e entrega da máquina.',
+  },
+  {
+    question: 'Como funciona o pagamento?',
+    answer: 'Aceito PIX, transferência bancária e dinheiro. O pagamento é feito após a conclusão do serviço, com nota fiscal inclusa.',
+  },
+  {
+    question: 'Tem garantia no serviço?',
+    answer: 'Sim! Todos os serviços têm garantia de 30 dias. Se o problema voltar dentro desse período, resolvo sem custo adicional.',
+  },
+];
+---
+
+<section class="section-padding bg-pattern-grid relative" id="faq">
+  <div class="container-custom relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-12 md:mb-16">
+      <span class="badge-highlight mb-4">Tire suas Dúvidas</span>
+      <h2 class="text-h2 text-deep-black mt-4">
+        Perguntas Frequentes
+      </h2>
+      <p class="text-soft-gray mt-4 max-w-2xl mx-auto">
+        Respostas rápidas para as dúvidas mais comuns.
+      </p>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="max-w-3xl mx-auto space-y-4">
+      {faqs.map((faq, index) => (
+        <details class="group bg-white rounded-xl shadow-soft hover:shadow-medium transition-shadow duration-300 overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer p-6 list-none [&::-webkit-details-marker]:hidden">
+            <div class="flex items-center gap-4">
+              <span class="font-mono text-sm text-vibrant-yellow font-semibold w-8">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3 class="text-lg font-semibold text-deep-black group-hover:text-vibrant-yellow transition-colors text-left">
+                {faq.question}
+              </h3>
+            </div>
+            <!-- Chevron icon -->
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="2" 
+              stroke-linecap="round" 
+              stroke-linejoin="round"
+              class="text-soft-gray group-open:rotate-180 transition-transform duration-300 flex-shrink-0"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 pt-0">
+            <div class="pl-12 border-l-2 border-vibrant-yellow/30">
+              <p class="text-soft-gray leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- CTA após FAQ -->
+    <div class="text-center mt-12">
+      <p class="text-soft-gray mb-4">Ainda tem dúvidas?</p>
+      <a 
+        href="#contato"
+        class="btn-secondary inline-flex items-center gap-2"
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="20" 
+          height="20" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          stroke-width="2" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+        </svg>
+        Fale Comigo
+      </a>
+    </div>
+  </div>
+</section>
+

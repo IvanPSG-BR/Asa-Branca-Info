@@ -1,0 +1,171 @@
+/* Importação das fontes do Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap");
+
+/* Tailwind Base, Components e Utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset e estilos base */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-ice-gray text-deep-black font-sans antialiased;
+    font-size: 16px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-deep-black font-bold;
+  }
+
+  h1 {
+    @apply text-h1;
+  }
+
+  h2 {
+    @apply text-h2;
+  }
+
+  h3 {
+    @apply text-h3;
+  }
+
+  p {
+    @apply text-body text-soft-gray;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+/* Componentes customizados */
+@layer components {
+  /* Botão primário com amarelo vibrante */
+  .btn-primary {
+    @apply bg-vibrant-yellow text-deep-black font-semibold px-6 py-3 rounded-lg 
+           hover:bg-accent-yellow transition-all duration-300 shadow-soft 
+           hover:shadow-medium active:scale-95;
+  }
+
+  /* Botão secundário outline */
+  .btn-secondary {
+    @apply border-2 border-vibrant-yellow text-deep-black font-semibold px-6 py-3 
+           rounded-lg hover:bg-vibrant-yellow transition-all duration-300 
+           active:scale-95;
+  }
+
+  /* Card padrão */
+  .card-base {
+    @apply bg-white rounded-xl shadow-soft hover:shadow-medium 
+           transition-shadow duration-300 p-6;
+  }
+
+  /* Container responsivo */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Seção padrão */
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Preço em fonte mono */
+  .price-display {
+    @apply font-mono text-2xl md:text-3xl font-bold text-deep-black;
+  }
+
+  /* Badge de destaque */
+  .badge-highlight {
+    @apply inline-block bg-vibrant-yellow text-deep-black text-sm font-semibold 
+           px-3 py-1 rounded-full;
+  }
+}
+
+/* Utilities customizadas */
+@layer utilities {
+  /* Gradiente de fundo sutil */
+  .bg-gradient-subtle {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e5e7eb 100%);
+  }
+
+  /* Texto com gradiente amarelo */
+  .text-gradient-yellow {
+    @apply bg-gradient-to-r from-vibrant-yellow to-accent-yellow bg-clip-text text-transparent;
+  }
+
+  /* Padrão de fundo: Dots (pontos) */
+  .bg-pattern-dots {
+    background-color: #f5f7fa;
+    background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Padrão de fundo: Grid (linhas) */
+  .bg-pattern-grid {
+    background-color: #f5f7fa;
+    background-image: linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Padrão de fundo: Diagonal sutil */
+  .bg-pattern-diagonal {
+    background-color: #f5f7fa;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      #e5e7eb 10px,
+      #e5e7eb 11px
+    );
+  }
+
+  /* Animação de pulso suave */
+  .pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+}
+
+/* Otimizações de performance */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Melhorias de acessibilidade */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus visible para acessibilidade */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-vibrant-yellow;
+}

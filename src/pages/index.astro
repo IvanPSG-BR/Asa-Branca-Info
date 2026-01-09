@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import ProcessSection from '../components/ProcessSection.astro';
+import DifferentialsSection from '../components/DifferentialsSection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+---
+
+<Layout>
+	<main>
+		<!-- Hero: Primeira impressão com CTA -->
+		<Hero />
+
+		<!-- Serviços: O que ofereço -->
+		<ServiceGrid />
+
+		<!-- Processo: Como funciona (O Plano de Voo) -->
+		<ProcessSection />
+
+		<!-- Diferenciais: Por que me escolher -->
+		<DifferentialsSection />
+
+		<!-- Preços: Pacotes e valores -->
+		<PricingSection />
+
+		<!-- FAQ: Dúvidas frequentes -->
+		<FAQSection />
+
+		<!-- Contato: CTA final -->
+		<ContactSection />
+	</main>
+</Layout>

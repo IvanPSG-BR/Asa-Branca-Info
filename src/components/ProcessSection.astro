@@ -1,0 +1,96 @@
+---
+interface Step {
+  number: string;
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const steps: Step[] = [
+  {
+    number: '01',
+    icon: 'message-circle',
+    title: 'Diagnóstico',
+    description: 'Conversa inicial pelo WhatsApp para entender o problema da sua máquina.',
+  },
+  {
+    number: '02',
+    icon: 'map-pin',
+    title: 'Check-in',
+    description: 'Coleta da máquina ou ida à sua residência em Mussurunga I e arredores.',
+  },
+  {
+    number: '03',
+    icon: 'plane-takeoff',
+    title: 'Decolagem',
+    description: 'Entrega do seu PC otimizado e pronto para voar novamente!',
+  },
+];
+
+const iconPaths: Record<string, string> = {
+  'message-circle': `<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>`,
+  'map-pin': `<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>`,
+  'plane-takeoff': `<path d="M2 22h20"/><path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l.9-.45a2 2 0 0 1 2.09.2l4.02 3a2 2 0 0 0 2.1.2l4.19-2.06a2.41 2.41 0 0 1 1.73-.17L21 7a1.4 1.4 0 0 1 .87 1.99l-.38.76c-.23.46-.6.84-1.07 1.08L7.58 17.85a2 2 0 0 1-1.22.15Z"/>`,
+};
+---
+
+<section class="section-padding bg-pattern-dots relative overflow-hidden" id="processo">
+  <div class="container-custom relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-12 md:mb-16">
+      <span class="badge-highlight mb-4">Como Funciona</span>
+      <h2 class="text-h2 text-deep-black mt-4">
+        O Plano de Voo
+      </h2>
+      <p class="text-soft-gray mt-4 max-w-2xl mx-auto">
+        Um processo simples e transparente para reviver sua máquina.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+      {steps.map((step, index) => (
+        <div class="relative group">
+          <!-- Connector line (hidden on mobile and last item) -->
+          {index < steps.length - 1 && (
+            <div class="hidden md:block absolute top-12 left-[60%] w-full h-0.5 bg-gradient-to-r from-vibrant-yellow to-transparent" />
+          )}
+          
+          <div class="text-center">
+            <!-- Step number -->
+            <span class="font-mono text-sm text-deep-black font-semibold tracking-wider mb-4 block bg-vibrant-yellow px-3 py-1 rounded-full inline-block">
+              PASSO {step.number}
+            </span>
+            
+            <!-- Icon container -->
+            <div class="w-24 h-24 mx-auto bg-white rounded-2xl shadow-soft flex items-center justify-center mb-6 group-hover:shadow-medium group-hover:-translate-y-1 transition-all duration-300 border-2 border-transparent group-hover:border-vibrant-yellow">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="36" 
+                height="36" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="1.5" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"
+                class="text-deep-black group-hover:text-vibrant-yellow transition-colors"
+                aria-hidden="true"
+                set:html={iconPaths[step.icon]}
+              />
+            </div>
+            
+            <!-- Content -->
+            <h3 class="text-h3 text-deep-black mb-3">
+              {step.title}
+            </h3>
+            <p class="text-soft-gray leading-relaxed max-w-xs mx-auto">
+              {step.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+

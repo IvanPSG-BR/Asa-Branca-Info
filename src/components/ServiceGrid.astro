@@ -1,0 +1,81 @@
+---
+interface Service {
+  icon: 'sparkles' | 'rocket' | 'cpu';
+  title: string;
+  description: string;
+}
+
+const services: Service[] = [
+  {
+    icon: 'sparkles',
+    title: 'Otimização e Polimento',
+    description: 'Foco em tornar o sistema leve sem perda de arquivos. Seu PC volta a voar!',
+  },
+  {
+    icon: 'rocket',
+    title: 'Formatação Decolagem',
+    description: 'Instalação limpa e drivers atualizados. Um novo começo para sua máquina.',
+  },
+  {
+    icon: 'cpu',
+    title: 'Consultoria de Hardware',
+    description: 'Upgrade justo para o seu bolso. Orientação honesta sobre o que vale a pena.',
+  },
+];
+
+// SVG paths para cada ícone Lucide
+const iconPaths: Record<string, string> = {
+  sparkles: `<path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/>`,
+  rocket: `<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>`,
+  cpu: `<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>`,
+};
+---
+
+<section class="section-padding bg-white" id="servicos">
+  <div class="container-custom">
+    <!-- Header da seção -->
+    <div class="text-center mb-12 md:mb-16">
+      <span class="badge-highlight mb-4">Meus Serviços</span>
+      <h2 class="text-h2 text-deep-black mt-4">
+        Soluções para seu computador
+      </h2>
+      <p class="text-soft-gray mt-4 max-w-2xl mx-auto">
+        Atendimento especializado para reviver sua máquina com qualidade e preço justo.
+      </p>
+    </div>
+    
+    <!-- Grid de serviços -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {services.map((service) => (
+        <article class="card-base group hover:-translate-y-1 transition-transform duration-300">
+          <!-- Ícone -->
+          <div class="w-14 h-14 bg-vibrant-yellow/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-vibrant-yellow/20 transition-colors">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="28" 
+              height="28" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="2" 
+              stroke-linecap="round" 
+              stroke-linejoin="round"
+              class="text-vibrant-yellow"
+              aria-hidden="true"
+              set:html={iconPaths[service.icon]}
+            />
+          </div>
+          
+          <!-- Conteúdo -->
+          <h3 class="text-h3 text-deep-black mb-3">
+            {service.title}
+          </h3>
+          <p class="text-soft-gray leading-relaxed">
+            {service.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,112 @@
+---
+interface Differential {
+  icon: string;
+  title: string;
+  description: string;
+  highlight: string;
+}
+
+const differentials: Differential[] = [
+  {
+    icon: 'shield-check',
+    title: 'Ética e Software Livre',
+    description: 'Uso de ferramentas de código aberto e otimizações nativas do sistema. Sem bloatware, sem programas duvidosos.',
+    highlight: 'Open Source',
+  },
+  {
+    icon: 'heart-handshake',
+    title: 'Respeito ao Hardware',
+    description: 'Foco em reviver máquinas antigas sem forçar upgrades desnecessários. Seu PC ainda tem vida útil!',
+    highlight: 'Sustentável',
+  },
+  {
+    icon: 'receipt',
+    title: 'Transparência Total',
+    description: 'Orçamentos em pacotes claros, sem enrolação. Você sabe exatamente o que está pagando.',
+    highlight: 'Sem Surpresas',
+  },
+];
+
+const iconPaths: Record<string, string> = {
+  'shield-check': `<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>`,
+  'heart-handshake': `<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/><path d="m18 15-2-2"/><path d="m15 18-2-2"/>`,
+  'receipt': `<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/>`,
+};
+---
+
+<section class="section-padding bg-white relative" id="diferenciais">
+  <div class="container-custom">
+    <!-- Header -->
+    <div class="text-center mb-12 md:mb-16">
+      <span class="badge-highlight mb-4">Por que me escolher?</span>
+      <h2 class="text-h2 text-deep-black mt-4">
+        Diferenciais Técnicos
+      </h2>
+      <p class="text-soft-gray mt-4 max-w-2xl mx-auto">
+        Técnico formado em Informática com foco em qualidade, ética e respeito ao seu equipamento.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+      {differentials.map((diff) => (
+        <article class="group relative bg-ice-gray rounded-2xl p-8 hover:bg-white hover:shadow-medium transition-all duration-300 border border-transparent hover:border-vibrant-yellow/30">
+          <!-- Highlight badge -->
+          <span class="absolute top-4 right-4 font-mono text-xs bg-vibrant-yellow text-deep-black px-2 py-1 rounded-full font-medium">
+            {diff.highlight}
+          </span>
+          
+          <!-- Icon -->
+          <div class="w-14 h-14 bg-vibrant-yellow rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="28" 
+              height="28" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="2" 
+              stroke-linecap="round" 
+              stroke-linejoin="round"
+              class="text-deep-black"
+              aria-hidden="true"
+              set:html={iconPaths[diff.icon]}
+            />
+          </div>
+          
+          <!-- Content -->
+          <h3 class="text-h3 text-deep-black mb-3">
+            {diff.title}
+          </h3>
+          <p class="text-soft-gray leading-relaxed">
+            {diff.description}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <!-- Credencial -->
+    <div class="mt-12 text-center">
+      <div class="inline-flex items-center gap-3 bg-deep-black text-white px-6 py-3 rounded-full">
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="20" 
+          height="20" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          stroke-width="2" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          class="text-vibrant-yellow"
+          aria-hidden="true"
+        >
+          <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+          <path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+        </svg>
+        <span class="font-medium">Técnico Formado em Informática</span>
+      </div>
+    </div>
+  </div>
+</section>
+

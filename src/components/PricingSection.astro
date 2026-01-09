@@ -1,0 +1,169 @@
+---
+interface PricingTier {
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
+}
+
+const pricingTiers: PricingTier[] = [
+  {
+    name: 'Pacote Otimização',
+    price: 'R$ 59,99',
+    description: 'Ideal para quem quer dar um gás na máquina sem formatar',
+    features: [
+      'Limpeza profunda de software',
+      'Remoção de bloatware e programas desnecessários',
+      'Verificação de saúde das peças (HD, RAM, CPU)',
+      'Otimização de inicialização',
+      'Relatório técnico completo',
+    ],
+  },
+  {
+    name: 'Pacote Decolagem',
+    price: 'R$ 99,99',
+    description: 'Formatação completa para um novo começo',
+    features: [
+      'Backup completo dos seus arquivos',
+      'Formatação e instalação limpa do Windows',
+      'Instalação de drivers atualizados',
+      'Pacote de programas básicos (navegador, OfficeSuite, etc)',
+      'Garantia de 30 dias',
+    ],
+    highlighted: true,
+  },
+  {
+    name: 'Escola de Pilotos',
+    price: 'R$ 49,99/h',
+    description: 'Aprenda a cuidar do seu PC como um profissional',
+    features: [
+      'Aula de manutenção básica',
+      'Dicas de segurança digital',
+      'Como fazer backup corretamente',
+      'Identificação de problemas comuns',
+      'Consultoria de upgrade de hardware',
+    ],
+  },
+];
+---
+
+<section class="section-padding bg-white" id="precos">
+  <div class="container-custom">
+    <!-- Header -->
+    <div class="text-center mb-12 md:mb-16">
+      <span class="badge-highlight mb-4">Preços Transparentes</span>
+      <h2 class="text-h2 text-deep-black mt-4">
+        Escolha o Pacote Ideal
+      </h2>
+      <p class="text-soft-gray mt-4 max-w-2xl mx-auto">
+        Valores justos e sem surpresas. Você sabe exatamente o que está pagando.
+      </p>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-8">
+      {pricingTiers.map((tier) => (
+        <article 
+          class={`relative bg-white rounded-2xl p-8 border-2 transition-all duration-300 ${
+            tier.highlighted 
+              ? 'border-vibrant-yellow shadow-medium scale-105' 
+              : 'border-slate-200 hover:border-vibrant-yellow/50 hover:shadow-soft'
+          }`}
+        >
+          {tier.highlighted && (
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-vibrant-yellow text-deep-black text-xs font-bold px-3 py-1 rounded-full">
+              MAIS POPULAR
+            </span>
+          )}
+          
+          <!-- Header -->
+          <div class="text-center mb-6">
+            <h3 class="text-xl font-bold text-deep-black mb-2">
+              {tier.name}
+            </h3>
+            <p class="text-sm text-soft-gray mb-4">
+              {tier.description}
+            </p>
+            <div class="inline-block bg-vibrant-yellow/70 rounded-full px-4 py-2 mb-2 backdrop-blur-sm">
+              <span class="price-display text-deep-black">
+                {tier.price}
+              </span>
+            </div>
+            <p class="text-xs text-soft-gray">
+              a partir de
+            </p>
+          </div>
+          
+          <!-- Features -->
+          <ul class="space-y-3 mb-6">
+            {tier.features.map((feature) => (
+              <li class="flex items-start gap-2 text-sm">
+                <!-- Check icon -->
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"
+                  class="text-green-600 flex-shrink-0 mt-0.5"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+                <span class="text-gray-700">{feature}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <!-- CTA -->
+          <a 
+            href="#contato"
+            class={`block text-center font-semibold px-6 py-3 rounded-lg transition-all duration-300 ${
+              tier.highlighted
+                ? 'bg-vibrant-yellow text-deep-black hover:bg-accent-yellow shadow-sm hover:shadow-md'
+                : 'border-2 border-vibrant-yellow text-deep-black hover:bg-vibrant-yellow'
+            }`}
+          >
+            Solicitar Orçamento
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="max-w-3xl mx-auto bg-ice-gray rounded-xl p-6 border-l-4 border-vibrant-yellow">
+      <div class="flex items-start gap-3">
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="20" 
+          height="20" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          stroke-width="2" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          class="text-vibrant-yellow flex-shrink-0 mt-0.5"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 16v-4"/>
+          <path d="M12 8h.01"/>
+        </svg>
+        <div class="text-sm text-gray-700">
+          <p class="font-semibold mb-1">Informações Importantes:</p>
+          <p>
+            Preços base para serviços remotos ou entrega na base (Mussurunga I, Salvador-BA). 
+            <strong>Taxa de visita + diagnóstico: R$ 34,99</strong> (valor abatido caso o serviço seja realizado).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,131 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import BackToTop from '../components/BackToTop.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = 'Asa Branca Informática | Assistência Técnica em Salvador-BA',
+  description = 'Assistência técnica especializada em computadores, notebooks e periféricos em Salvador-BA. Manutenção, formatação, limpeza e upgrades com qualidade e preço justo. Atendimento rápido e profissional.',
+  keywords = 'assistência técnica salvador, conserto computador salvador, formatação notebook salvador, manutenção pc bahia, técnico informática salvador, reparo computador, limpeza notebook, upgrade pc salvador',
+  ogImage = '/og-image.jpg',
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+} = Astro.props;
+
+const siteTitle = title;
+const fullTitle = title.includes('Asa Branca') ? title : `${title} | Asa Branca Informática`;
+---
+
+<!doctype html>
+<html lang="pt-BR" data-theme="asabranca">
+  <head>
+    <!-- Meta Tags Essenciais -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Básico -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Asa Branca Informática" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
+    
+    <!-- SEO Local - Salvador, Bahia -->
+    <meta name="geo.region" content="BR-BA" />
+    <meta name="geo.placename" content="Salvador" />
+    <meta name="geo.position" content="-12.9714;-38.5014" />
+    <meta name="ICBM" content="-12.9714, -38.5014" />
+    
+    <!-- Informações de Negócio Local -->
+    <meta name="author" content="Asa Branca Informática" />
+    <meta name="contact" content="contato@asabrancainformatica.com.br" />
+    <meta name="coverage" content="Salvador, Bahia, Brasil" />
+    <meta name="distribution" content="local" />
+    <meta name="rating" content="general" />
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Preconnect para fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#F5F7FA" />
+    <meta name="msapplication-TileColor" content="#FFD700" />
+    
+    <!-- Performance Hints -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    
+    <!-- Schema.org JSON-LD para Negócio Local -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ComputerStore",
+      "name": "Asa Branca Informática",
+      "description": description,
+      "url": Astro.site,
+      "logo": new URL('/logo.png', Astro.site).href,
+      "image": new URL(ogImage, Astro.site).href,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Salvador",
+        "addressRegion": "BA",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-12.9714",
+        "longitude": "-38.5014"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Salvador",
+        "containedIn": {
+          "@type": "State",
+          "name": "Bahia"
+        }
+      },
+      "priceRange": "$$",
+      "telephone": "+55-71-XXXX-XXXX",
+      "openingHours": "Mo-Fr 09:00-18:00, Sa 09:00-13:00",
+      "sameAs": [
+        "https://www.facebook.com/asabrancainformatica",
+        "https://www.instagram.com/asabrancainformatica"
+      ]
+    })} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Navbar />
+    <slot />
+    <BackToTop />
+  </body>
+</html>
+
