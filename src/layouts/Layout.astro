@@ -14,13 +14,17 @@ interface Props {
 const {
   title = 'Asa Branca Informática | Assistência Técnica em Salvador-BA',
   description = 'Assistência técnica especializada em computadores, notebooks e periféricos em Salvador-BA. Manutenção, formatação, limpeza e upgrades com qualidade e preço justo. Atendimento rápido e profissional.',
-  keywords = 'assistência técnica salvador, conserto computador salvador, formatação notebook salvador, manutenção pc bahia, técnico informática salvador, reparo computador, limpeza notebook, upgrade pc salvador',
+  keywords = 'assistência técnica salvador, conserto computador salvador, formatação notebook salvador, manutenção pc bahia, técnico informática salvador, reparo computador, limpeza notebook, upgrade pc salvador, assistência técnica mussurunga, conserto computador mussurunga, formatação notebook mussurunga, técnico informática são cristóvão, conserto computador são cristóvão, manutenção pc são cristóvão',
   ogImage = '/og-image.jpg',
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
 
 const siteTitle = title;
 const fullTitle = title.includes('Asa Branca') ? title : `${title} | Asa Branca Informática`;
+
+// src/components/Umami.astro
+const websiteId = 'b35d2b85-fbb7-481e-9ab2-1016ff13db02';
+const umamiSrc = 'https://cloud.umami.is/script.js';
 ---
 
 <!doctype html>
@@ -30,6 +34,10 @@ const fullTitle = title.includes('Asa Branca') ? title : `${title} | Asa Branca 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    
+
+    <!-- Umami Analytics -->
+    <script defer src={umamiSrc} data-website-id={websiteId}></script>
     
     <!-- SEO Básico -->
     <title>{fullTitle}</title>
@@ -61,7 +69,7 @@ const fullTitle = title.includes('Asa Branca') ? title : `${title} | Asa Branca 
     
     <!-- Informações de Negócio Local -->
     <meta name="author" content="Asa Branca Informática" />
-    <meta name="contact" content="contato@asabrancainformatica.com.br" />
+    <meta name="contact" content="contato@asabrancainfo.com.br" />
     <meta name="coverage" content="Salvador, Bahia, Brasil" />
     <meta name="distribution" content="local" />
     <meta name="rating" content="general" />
@@ -113,8 +121,8 @@ const fullTitle = title.includes('Asa Branca') ? title : `${title} | Asa Branca 
           "name": "Bahia"
         }
       },
-      "priceRange": "$$",
-      "telephone": "+55-71-XXXX-XXXX",
+      "priceRange": "$",
+      "telephone": "+55-71-98484-3571",
       "openingHours": "Mo-Fr 09:00-18:00, Sa 09:00-13:00",
       "sameAs": [
         "https://www.facebook.com/asabrancainformatica",
