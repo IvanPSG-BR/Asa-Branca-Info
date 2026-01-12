@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@yeskunall/astro-umami':
+        specifier: ^0.0.7
+        version: 0.0.7(astro@5.16.7(jiti@1.21.7)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.2))
       astro:
         specifier: ^5.16.7
         version: 5.16.7(jiti@1.21.7)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.2)
@@ -701,6 +704,11 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
+
+  '@yeskunall/astro-umami@0.0.7':
+    resolution: {integrity: sha512-8W/At28qKyPGepwvVumgJX0VZ0F9KK4M4zNDQfUZ3iBJpAKUTAkdIXM7i7I+PFsP7rXOo/AVgcDXDOv9L03QhQ==}
+    peerDependencies:
+      astro: ^3.0.0 || ^4.0.0 || ^5.0.0
 
   acorn@8.15.0:
     resolution: {integrity: sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg==}
@@ -2559,6 +2567,10 @@ snapshots:
       vite: 6.4.1(jiti@1.21.7)(yaml@2.8.2)
     transitivePeerDependencies:
       - supports-color
+
+  '@yeskunall/astro-umami@0.0.7(astro@5.16.7(jiti@1.21.7)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.2))':
+    dependencies:
+      astro: 5.16.7(jiti@1.21.7)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.2)
 
   acorn@8.15.0: {}
 

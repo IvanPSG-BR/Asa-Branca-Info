@@ -21,10 +21,6 @@ const {
 
 const siteTitle = title;
 const fullTitle = title.includes('Asa Branca') ? title : `${title} | Asa Branca Informática`;
-
-// src/components/Umami.astro
-const websiteId = 'b35d2b85-fbb7-481e-9ab2-1016ff13db02';
-const umamiSrc = 'https://cloud.umami.is/script.js';
 ---
 
 <!doctype html>
@@ -34,10 +30,6 @@ const umamiSrc = 'https://cloud.umami.is/script.js';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    
-
-    <!-- Umami Analytics -->
-    <script defer src={umamiSrc} data-website-id={websiteId}></script>
     
     <!-- SEO Básico -->
     <title>{fullTitle}</title>

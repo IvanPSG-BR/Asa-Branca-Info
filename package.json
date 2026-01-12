@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@yeskunall/astro-umami": "^0.0.7",
     "astro": "^5.16.7",
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",

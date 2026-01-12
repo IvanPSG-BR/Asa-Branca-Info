@@ -32,4 +32,27 @@ import ContactSection from '../components/ContactSection.astro';
 		<!-- Contato: CTA final -->
 		<ContactSection />
 	</main>
+
+  <!-- Umami: tracking script para capturar UTMs e atualizar campaign parameter -->
+  <script>
+    (function(){
+      if (!window.umami) return;
+      try {
+        const params = Object.fromEntries(new URLSearchParams(window.location.search));
+        // envia landing_view com UTMs para o Umami
+        window.umami.track && window.umami.track('landing_view', params);
+        const utmCampaign = params.utm_campaign || null;
+        if (utmCampaign) {
+          document.querySelectorAll('a[data-umami-event="whatsapp_click"]').forEach(a => {
+            try {
+              const current = a.getAttribute('data-umami-props');
+              const obj = current ? JSON.parse(current) : {};
+              obj.campaign = utmCampaign;
+              a.setAttribute('data-umami-props', JSON.stringify(obj));
+            } catch (e) { /* ignorar erros de parse */ }
+          });
+        }
+      } catch (e) { console.warn('Umami tracking init failed', e); }
+    })();
+  </script>
 </Layout>
